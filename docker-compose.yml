@@ -2,5 +2,6 @@ version: '3'
 services:
   mocking:
     build: .
-  environment:
-    - DISCORD_TOKEN
+    environment:
+      - DISCORD_TOKEN
+    restart: unless-stopped
