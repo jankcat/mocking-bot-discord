@@ -1,7 +1,7 @@
 {
   "name": "mocking-bot-discord",
   "version": "1.0.0",
-  "description": "",
+  "description": "Listens for :mocking: reaction on messages, responds by mocking the message.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
