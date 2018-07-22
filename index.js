@@ -39,7 +39,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
   // do the dew
   // https://wt-22f5e1b994607080041c947354b7f9a5-0.run.webtask.io/sponge?message=
   const { body } = await snekfetch.get('https://wt-22f5e1b994607080041c947354b7f9a5-0.run.webtask.io/sponge').query({ message: message });
-  const reply = `Requested by ${user.username}: ${body}`;
+  const reply = `${user.username} mocking ${reaction.message.author.username}: ${body}`;
   reaction.message.channel.send(reply);
   
   // Log it in console
