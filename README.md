@@ -5,6 +5,7 @@
 - Ignores bot reactions & bot messages
 - Only goes back 7 messages per channel to prevent out-of-context mocking
 - Ignores messages over a day old
+- Ignores messages that are just valid URLs, as per https://github.com/ogt/valid-url
 
 Add by visiting: https://discordapp.com/oauth2/authorize?client_id=470425725808279573&scope=bot&permissions=117760
 

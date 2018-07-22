@@ -1,4 +1,5 @@
 const snekfetch = require('snekfetch');
+const validUrl = require('valid-url');
 const Discord = require('discord.js');
 const client = new Discord.Client({
   messageCacheMaxSize: 7
@@ -28,6 +29,9 @@ client.on('messageReactionAdd', async (reaction, user) => {
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
   if (reaction.message.createdAt < yesterday) return;  
+  
+  // Ignore messages that are just valid URLs
+  if (validUrl.isUri(message)) return;
   
   // React with mocking so the same user cant keep unreacting and reacting
   reaction.message.react(reaction.emoji);
