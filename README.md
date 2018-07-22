@@ -10,6 +10,10 @@
 - Ignores messages over a day old
 - Ignores messages that are just valid URLs, as per https://github.com/ogt/valid-url
 
+## Example
+
+![ExAmPlE](https://raw.githubusercontent.com/jankcat/mocking-bot-discord/master/example.png)
+
 ## Usage
 
 Add by visiting: https://discordapp.com/oauth2/authorize?client_id=470425725808279573&scope=bot&permissions=117760
