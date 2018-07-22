@@ -8,44 +8,6 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-
-/* 
-A good thing to know, in case we want to extend beyond the message cache
-But for now I only want the last few messages per channel
-// https://discordjs.guide/#/popular-topics/reactions?id=emitting-the-events-yourself
-// if we go to v12: https://gist.github.com/Lewdcario/52e1c66433c994c5c3c272284b9ab29c
-const events = {
-  MESSAGE_REACTION_ADD: 'messageReactionAdd',
-};
-
-
-// Listen for uncached reactions, emit the reaction add event after
-client.on('raw', async event => {
-  // only listen to events we pre-defined above
-  if (!events.hasOwnProperty(event.t)) return;
-  
-  // get the event info
-  const { d: data } = event;
-  const user = client.users.get(data.user_id);
-  const channel = client.channels.get(data.channel_id) || await user.createDM();
-
-  // do not emit for cached messages (as they already emit)
-  if (channel.messages.has(data.message_id)) return;
-  
-  // get the emoji that was reacted with
-  const message = await channel.fetchMessage(data.message_id);
-  const emojiKey = (data.emoji.id) ? `${data.emoji.name}:${data.emoji.id}` : data.emoji.name;
-  let reaction = message.reactions.get(emojiKey);
-  // reate a temporary object that can be passed through the event if last reaction was removed
-  if (!reaction) {
-    const emoji = new Discord.Emoji(client.guilds.get(data.guild_id), data.emoji);
-    reaction = new Discord.MessageReaction(message, emoji, 1, data.user_id === client.user.id);
-  }
-  
-  client.emit(events[event.t], reaction, user);
-});
-*/
-
 client.on('messageReactionAdd', async (reaction, user) => {
   // Only listen to spongebob emoji, only the first time per message
   if (reaction.emoji.name !== 'mocking' || reaction.count !== 1) return;
