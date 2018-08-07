@@ -21,6 +21,7 @@ client.on('guildCreate', async (guild) => {
   }
   // No mocking found, create it.
   await guild.createEmoji('https://raw.githubusercontent.com/jankcat/mocking-bot-discord/master/mocking.png', 'mocking');
+  console.log(`[${guild.name}] mocking emoji added.`);
 });
 
 client.on('messageReactionAdd', async (reaction, user) => {
