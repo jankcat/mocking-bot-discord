@@ -11,6 +11,18 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+client.on('guildCreate', async (guild) => {
+  console.log(`[${guild.name}] Joined server. Checking for mocking emoji.`);
+  for (var [key, value] of guild.emojis) {
+    if (value.name === 'mocking') {
+      console.log(`[${guild.name}] mocking emoji exists.`);
+      return;
+    } 
+  }
+  // No mocking found, create it.
+  await guild.createEmoji('https://raw.githubusercontent.com/jankcat/mocking-bot-discord/master/mocking.png', 'mocking');
+});
+
 client.on('messageReactionAdd', async (reaction, user) => {
   // Only listen to spongebob emoji, only the first time per message
   if (reaction.emoji.name !== 'mocking' || reaction.count !== 1) return;
