@@ -11,17 +11,22 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on('guildCreate', async (guild) => {
-  console.log(`[${guild.name}] Joined server. Checking for mocking emoji.`);
-  for (var [key, value] of guild.emojis) {
+client.on('guildMemberAdd', async (member) => {
+  if (member.id !== client.user.id) return;
+  console.log(`[${member.guild.name}] Joined server. Checking for mocking emoji.`);
+  for (var [key, value] of member.guild.emojis) {
     if (value.name === 'mocking') {
-      console.log(`[${guild.name}] mocking emoji exists.`);
+      console.log(`[${member.guild.name}] mocking emoji exists.`);
       return;
     } 
   }
-  // No mocking found, create it.
+  // No mocking found, create it if we can
+  if (member.guild.emojis.size >= 50) {
+    console.log(`[${member.guild.name}] 50 emojis already, mocking emoji cannot be added.`);
+    return;
+  }
   await guild.createEmoji('https://raw.githubusercontent.com/jankcat/mocking-bot-discord/master/mocking.png', 'mocking');
-  console.log(`[${guild.name}] mocking emoji added.`);
+  console.log(`[${member.guild.name}] mocking emoji added.`);
 });
 
 client.on('messageReactionAdd', async (reaction, user) => {
