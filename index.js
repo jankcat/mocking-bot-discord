@@ -64,6 +64,21 @@ client.on('messageReactionAdd', async (reaction, user) => {
 
 const shrekReaction = async function(reaction, user) {
   // React with mocking so the same user can't keep unreacting and reacting
+  await reaction.message.react(reaction.emoji);
+  
+  await reaction.message.react('🇭');
+  await reaction.message.react('🇪');
+  await reaction.message.react('🇾');
+  await reaction.message.react('🇳');
+  await reaction.message.react('🇴');
+  await reaction.message.react('🇼');
+  console.log(`[${reaction.message.guild.name}][${reaction.message.channel.name}] ${user.username} thinks ${reaction.message.author.username} is an all-star`);
+};
+
+const mockingReaction = async function(reaction, user) {
+  // React with mocking so the same user can't keep unreacting and reacting
+  await reaction.message.react(reaction.emoji);
+  
   // Make sure the message is long enough
   if (!reaction.message.content.trim()) return;
   let message = reaction.message.content.trim();
@@ -101,20 +116,6 @@ const shrekReaction = async function(reaction, user) {
   // Log it in console
   console.log(`[${reaction.message.guild.name}][${reaction.message.channel.name}] ${reply}`);
 };
-
-client.on('error', console.error);
-
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-});
-
-client.on('guildMemberAdd', async (member) => {
-  if (member.id !== client.user.id) return;
-  console.log(`[${member.guild.name}] Joined server. Checking for emojis.`);
-  await checkEmojiExists('mocking');
-  await checkEmojiExists('shrek');
-  await checkEmojiExists('shrek2');
-});
 
 const regexPatterns = {
   channel: (channel) => new RegExp(`(<#${channel}>)`, "g"),
