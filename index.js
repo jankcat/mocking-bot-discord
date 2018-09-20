@@ -5,56 +5,30 @@ const client = new Discord.Client({
   messageCacheMaxSize: 7
 });
 
-client.on('error', console.error);
-
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-});
-
-client.on('guildMemberAdd', async (member) => {
-  if (member.id !== client.user.id) return;
-  console.log(`[${member.guild.name}] Joined server. Checking for mocking emoji.`);
+const checkEmojiExists = async function(emoji) {
   for (var [key, value] of member.guild.emojis) {
-    if (value.name === 'mocking') {
-      console.log(`[${member.guild.name}] mocking emoji exists.`);
-      return;
+    if (value.name === emoji) {
+      console.log(`[${member.guild.name}] ${emoji} emoji exists.`);
+      return true;
     } 
   }
-  // No mocking found, create it if we can
+  // No emoji found, create it if we can
   if (member.guild.emojis.size >= 50) {
-    console.log(`[${member.guild.name}] 50 emojis already, mocking emoji cannot be added.`);
-    return;
+    console.log(`[${member.guild.name}] 50 emojis already, ${emoji} emoji cannot be added.`);
+    return false;
   }
-  await guild.createEmoji('https://raw.githubusercontent.com/jankcat/mocking-bot-discord/master/mocking.png', 'mocking');
-  console.log(`[${member.guild.name}] mocking emoji added.`);
-});
+  await guild.createEmoji(`https://raw.githubusercontent.com/jankcat/mocking-bot-discord/master/${emoji}.png`, emoji');
+  console.log(`[${member.guild.name}] ${emoji} emoji added.`);
+};
 
-client.on('messageReactionAdd', async (reaction, user) => {
-  // Only listen to spongebob emoji, only the first time per message
-  if (reaction.emoji.name !== 'mocking' || reaction.count !== 1) return;
-  
+const mockingReaction = async function() {
   // Make sure the message is long enough
   if (!reaction.message.content.trim()) return;
   let message = reaction.message.content.trim();
   if (message.length < 4) return;
   
-  // Ignore bot messages and reactions
-  if (reaction.message.system || reaction.message.author.bot || user.bot) return;
-  
-  // Ignore DMs
-  if (!reaction.message.channel.name) return;
-  if (!reaction.message.guild || !reaction.message.guild.available) return;
-  
-  // Make sure the message was sent in the last day
-  const yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 1);
-  if (reaction.message.createdAt < yesterday) return;  
-  
   // Ignore messages that are just valid URLs
   if (validUrl.isUri(message)) return;
-  
-  // React with mocking so the same user cant keep unreacting and reacting
-  reaction.message.react(reaction.emoji);
   
   // Modify the message to resolve channel mentions
   if (reaction.message.mentions.channels.size) {
@@ -84,6 +58,42 @@ client.on('messageReactionAdd', async (reaction, user) => {
   
   // Log it in console
   console.log(`[${reaction.message.guild.name}][${reaction.message.channel.name}] ${reply}`);
+};
+
+client.on('error', console.error);
+
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
+
+client.on('guildMemberAdd', async (member) => {
+  if (member.id !== client.user.id) return;
+  console.log(`[${member.guild.name}] Joined server. Checking for emojis.`);
+  await checkEmojiExists('mocking');
+  await checkEmojiExists('shrek');
+  await checkEmojiExists('shrek2');
+});
+
+client.on('messageReactionAdd', async (reaction, user) => {
+  // React with mocking so the same user can't keep unreacting and reacting
+  reaction.message.react(reaction.emoji);
+  
+  // Only the first time per message
+  if (reaction.count !== 1) return;
+  
+  // Ignore DMs
+  if (!reaction.message.channel.name) return;
+  if (!reaction.message.guild || !reaction.message.guild.available) return;
+  
+  // Ignore bot messages and reactions
+  if (reaction.message.system || reaction.message.author.bot || user.bot) return;
+  
+  // Make sure the message was sent in the last day
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  if (reaction.message.createdAt < yesterday) return;
+  
+  if (reaction.emoji.name === 'mocking') mockingReaction();
 });
 
 const regexPatterns = {
