@@ -17,7 +17,7 @@ const checkEmojiExists = async function(emoji) {
     console.log(`[${member.guild.name}] 50 emojis already, ${emoji} emoji cannot be added.`);
     return false;
   }
-  await guild.createEmoji(`https://raw.githubusercontent.com/jankcat/mocking-bot-discord/master/${emoji}.png`, emoji');
+  await guild.createEmoji(`https://raw.githubusercontent.com/jankcat/mocking-bot-discord/master/${emoji}.png`, emoji);
   console.log(`[${member.guild.name}] ${emoji} emoji added.`);
 };
 
