@@ -25,3 +25,10 @@ Add by visiting: https://discordapp.com/oauth2/authorize?client_id=4704257258082
 3. Create a bot in the Discord developer console
 4. `export DISCORD_TOKEN=YOUR_TOKEN`
 5. `docker-compose up -d`
+
+## Other Things
+
+It does this: 
+
+![heynow](https://raw.githubusercontent.com/jankcat/mocking-bot-discord/master/heynow.png)
+
