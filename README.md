@@ -31,4 +31,4 @@ Add by visiting: https://discordapp.com/oauth2/authorize?client_id=4704257258082
 It does this: 
 
 ![heynow](https://raw.githubusercontent.com/jankcat/mocking-bot-discord/master/heynow.png)
-
+![yourearockstar](https://raw.githubusercontent.com/jankcat/mocking-bot-discord/master/shrek2-example.PNG)
