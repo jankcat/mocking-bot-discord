@@ -1,6 +1,10 @@
 # mocking-bot-discord
 
-## About
+## Example
+
+![ExAmPlE](https://raw.githubusercontent.com/jankcat/mocking-bot-discord/master/example.png)
+
+## Mocking Criteria
 
 - Listens for :mocking: reaction on messages, responds by mocking the message.
 - Example emoji is included in this repo (see: `mocking.png`). Bot will add mocking emoji on server-join if it does not exist
@@ -10,9 +14,15 @@
 - Ignores messages over a day old
 - Ignores messages that are just valid URLs, as per https://github.com/ogt/valid-url
 
-## Example
+## Other Things
 
-![ExAmPlE](https://raw.githubusercontent.com/jankcat/mocking-bot-discord/master/example.png)
+It does this:
+
+![heynow](https://raw.githubusercontent.com/jankcat/mocking-bot-discord/master/heynow.png)
+
+And this:
+
+![yourearockstar](https://raw.githubusercontent.com/jankcat/mocking-bot-discord/master/shrek2-example.PNG)
 
 ## Usage
 
@@ -25,10 +35,3 @@ Add by visiting: https://discordapp.com/oauth2/authorize?client_id=4704257258082
 3. Create a bot in the Discord developer console
 4. `export DISCORD_TOKEN=YOUR_TOKEN`
 5. `docker-compose up -d`
-
-## Other Things
-
-It does this: 
-
-![heynow](https://raw.githubusercontent.com/jankcat/mocking-bot-discord/master/heynow.png)
-![yourearockstar](https://raw.githubusercontent.com/jankcat/mocking-bot-discord/master/shrek2-example.PNG)

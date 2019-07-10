@@ -2,9 +2,9 @@
   "name": "mocking-bot-discord",
   "version": "1.0.0",
   "description": "Listens for :mocking: reaction on messages, responds by mocking the message.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -17,8 +17,9 @@
   },
   "homepage": "https://github.com/jankcat/mocking-bot-discord#readme",
   "dependencies": {
-    "bufferutil": "^4.0.0",
-    "discord.js": "^11.3.2",
+    "bufferutil": "^4.0.1",
+    "discord.js": "^11.5.1",
+    "fuse.js": "^3.4.5",
     "snekfetch": "^4.0.4",
     "valid-url": "^1.0.9"
   }
