@@ -5,7 +5,7 @@ module.exports = async function(message, term) {
   let fuse = new Fuse(memes, searchOptions);
   let result = fuse.search(term);
   
-  if (!result || result[0] || result[0].item.url) {
+  if (!result || !result[0] || !result[0].item.url) {
     fuse = new Fuse(memes, secondSearchOptions);
     result = fuse.search(term);
   }
