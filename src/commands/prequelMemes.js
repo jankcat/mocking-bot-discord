@@ -2,8 +2,13 @@ const Fuse = require('fuse.js');
 const { Attachment } = require('discord.js');
 
 module.exports = async function(message, term) {
-  const fuse = new Fuse(memes, searchOptions);
-  const result = fuse.search(term);
+  let fuse = new Fuse(memes, searchOptions);
+  let result = fuse.search(term);
+  
+  if (!result || result[0] || result[0].item.url) {
+    fuse = new Fuse(memes, secondSearchOptions);
+    result = fuse.search(term);
+  }
 
   if (result && result[0] && result[0].item.url) {
     const image = new Attachment(result[0].item.url);
@@ -17,6 +22,20 @@ const searchOptions = {
   shouldSort: true,
   tokenize: true,
   matchAllTokens: true,
+  findAllMatches: true,
+  includeScore: true,
+  threshold: 0.6,
+  location: 0,
+  distance: 1000,
+  maxPatternLength: 256,
+  minMatchCharLength: 1,
+  keys: [
+    "terms"
+  ]
+};
+
+const secondSearchOptions = {
+  shouldSort: true,
   findAllMatches: true,
   includeScore: true,
   threshold: 0.6,
