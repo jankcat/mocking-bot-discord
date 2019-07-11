@@ -1,3 +1,8 @@
 module.exports = async function(message) {
-  message.channel.send(`/tts General Kenobi`);
+  message.channel.send(
+    `General Kenobi`,
+    {
+      tts: true,
+    }
+  );
 };
