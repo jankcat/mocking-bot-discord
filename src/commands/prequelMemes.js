@@ -82,7 +82,7 @@ const memes = [
   { terms: ['The attempt on my life has left me scarred and deformed'], url: "https://i.imgur.com/ANbSv2W.jpg" },
   { terms: ['don\'t worry, I\'ve given up trying to argue with you'], url: "https://i.imgur.com/PQEWoBj.jpg" },
   { terms: ['I don\'t know'], url: "https://i.imgur.com/UtXqmQK.jpg" },
-  { terms: ['this is outrageous, it\'s unfair'], url: "https://i.imgur.com/TyhtJV6.jpg" },
+  { terms: ['this is outrageous, it\'s unfair', 'thats not fair'], url: "https://i.imgur.com/TyhtJV6.jpg" },
   { terms: ['all too easy'], url: "https://i.imgur.com/coKR0s0.png" },
   { terms: ['not. yet.'], url: "https://i.imgur.com/ihmizjX.jpg" },
 ];
