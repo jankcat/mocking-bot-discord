@@ -19,7 +19,7 @@ const searchOptions = {
   threshold: 0.6,
   location: 0,
   distance: 1000,
-  maxPatternLength: 32,
+  maxPatternLength: 256,
   minMatchCharLength: 1,
   keys: [
     "terms"
