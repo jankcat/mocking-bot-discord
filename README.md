@@ -26,7 +26,7 @@ And this:
 
 ## Usage
 
-Add by visiting: https://discordapp.com/oauth2/authorize?client_id=470425725808279573&scope=bot&permissions=1073859648
+Add by visiting: https://discordapp.com/oauth2/authorize?client_id=470425725808279573&scope=bot&permissions=1073863744
 
 ## Roll-your-own
 
