@@ -16,6 +16,9 @@ module.exports = async function(message, term) {
 const searchOptions = {
   shouldSort: true,
   includeScore: true,
+  tokenize: true,
+  matchAllTokens: true,
+  findAllMatches: true,
   threshold: 0.6,
   location: 0,
   distance: 1000,
