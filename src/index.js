@@ -4,6 +4,7 @@ const shrek2Reaction = require('./commands/shrek2Reaction');
 const shrekReaction = require('./commands/shrekReaction');
 const mockingReaction = require('./commands/mockingReaction');
 const prequelMemes = require('./commands/prequelMemes');
+const prequelTts = require('./commands/prequelTts');
 
 const client = new Discord.Client({
   messageCacheMaxSize: 7
@@ -37,6 +38,8 @@ client.on('message', async (message) => {
   if (message.content.startsWith(prequelCommand)) {
     const args = message.content.slice(prequelCommand.length).toLowerCase();
     await prequelMemes(message, args);
+  } else if (message.content.toLowerCase() === 'hello there') {
+    await prequelTts(message);
   }
 });
 
