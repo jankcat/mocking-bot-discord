@@ -5,6 +5,7 @@ const shrekReaction = require('./commands/shrekReaction');
 const mockingReaction = require('./commands/mockingReaction');
 const prequelMemes = require('./commands/prequelMemes');
 const prequelTts = require('./commands/prequelTts');
+const guilty = require('./commands/guilty');
 
 const client = new Discord.Client({
   messageCacheMaxSize: 7
@@ -40,6 +41,8 @@ client.on('message', async (message) => {
     await prequelMemes(message, args);
   } else if (message.content.toLowerCase() === 'hello there') {
     await prequelTts(message);
+  } else if (message.content.toLowerCase() === '/guilty') {
+    await guilty(message);
   }
 });
 
