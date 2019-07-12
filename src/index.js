@@ -5,6 +5,7 @@ const shrekReaction = require('./commands/shrekReaction');
 const mockingReaction = require('./commands/mockingReaction');
 const prequelMemes = require('./commands/prequelMemes');
 const prequelTts = require('./commands/prequelTts');
+const darthPlagueis = require('./commands/darthPlagueis');
 const guilty = require('./commands/guilty');
 
 const client = new Discord.Client({
@@ -43,6 +44,8 @@ client.on('message', async (message) => {
     await prequelTts(message);
   } else if (message.content.toLowerCase() === '/guilty') {
     await guilty(message);
+  } else if (message.content.toLowerCase() === 'did you ever hear the tragedy of darth plagueis the wise?') {
+    await darthPlagueis(message);
   }
 });
 
