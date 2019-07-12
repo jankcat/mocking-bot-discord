@@ -37,7 +37,7 @@ client.on('message', async (message) => {
 
   const prequelCommand = '/prequel';
   if (message.content.startsWith(prequelCommand)) {
-    const args = message.content.slice(prequelCommand.length);
+    const args = message.content.slice(prequelCommand.length + 1); // plus space
     await prequelMemes(message, args);
   } else if (message.content.toLowerCase() === 'hello there') {
     await prequelTts(message);
