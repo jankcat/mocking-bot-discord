@@ -24,6 +24,13 @@ And this:
 
 ![yourearockstar](https://raw.githubusercontent.com/jankcat/mocking-bot-discord/master/shrek2-example.PNG)
 
+Also:
+
+```
+/prequel some search terms
+/guilty
+```
+
 ## Usage
 
 Add by visiting: https://discordapp.com/oauth2/authorize?client_id=470425725808279573&scope=bot&permissions=1073863744
