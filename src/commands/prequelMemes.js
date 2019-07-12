@@ -14,8 +14,10 @@ module.exports = async function(message, term) {
   if (result && result[0] && result[0].item.url) {
     const image = new Attachment(result[0].item.url);
     message.channel.send(image);
+    console.log(`[${message.guild.name}][${message.channel.name}] ${message.author.username} prequel meme'd '${term}'.`);
   } else {
     message.channel.send(`Unable to find "${term}". Get good. Uninstall.`);
+    console.log(`[${message.guild.name}][${message.channel.name}] ${message.author.username} prequel meme'd '${term}', to no avail.`);
   }
 };
 
