@@ -44,7 +44,7 @@ client.on('message', async (message) => {
     await prequelTts(message);
   } else if (message.content.toLowerCase() === '/guilty') {
     await guilty(message);
-  } else if (message.content.toLowerCase() === 'did you ever hear the tragedy of darth plagueis the wise?') {
+  } else if (message.content.toLowerCase().startsWith('did you ever hear the tragedy of darth')) {
     await darthPlagueis(message);
   }
 });
