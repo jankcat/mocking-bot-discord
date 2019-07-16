@@ -31,6 +31,11 @@ module.exports = async function(reaction, user) {
       message = message.replace(regexPatterns.role(key), `@${value.name}`);
     }
   }
+  // Modify the message to remove /prequel from the start, if it exists
+  if (message.startsWith('/prequel ')) {
+    message = message.slice('/prequel '.length);
+  }
+  
   // Do not need to resolve everyone/here
 
   // do the dew
