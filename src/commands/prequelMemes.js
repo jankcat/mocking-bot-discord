@@ -178,7 +178,7 @@ const memes = [
   { terms: ['what have i done'], url: "https://i.imgur.com/akk0P10.png" },
   { terms: ['well then you are lost'], url: "https://i.imgur.com/nbuiFjq.png" },
   { terms: ['your new empire?'], url: "https://i.imgur.com/M6423sJ.png" },
-  { terms: ['she cant do that shoot her or something'], url: "https://i.imgur.com/Fv8Ttc5.png" },
+  { terms: ['shoot her', 'shoot her or something', 'she cant do that shoot her or something'], url: "https://i.imgur.com/Fv8Ttc5.png" },
   { terms: ['they have shield generators'], url: "https://i.imgur.com/n4CelGR.png" },
   { terms: ['i am the senate'], url: "https://i.imgur.com/ecLoARq.png" },
   { terms: ['im sorry sir its time for you to leave'], url: "https://i.imgur.com/anGwpz7.png" },
