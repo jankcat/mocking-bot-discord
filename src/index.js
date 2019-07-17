@@ -15,6 +15,7 @@ const client = new Discord.Client({
 client.on('error', console.error);
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
+  client.guilds.tap(guild => console.log(`[${guild.name}] [ready] Rejoining server.`));
 });
 
 client.on('guildCreate', async (guild) => {
