@@ -7,7 +7,7 @@ module.exports = async function(reaction, user) {
 
   // Make sure the message is long enough
   if (!reaction.message.content.trim()) return;
-  let message = reaction.message.content.trim();
+  let message = reaction.message.content.replace(/<.*?>/g, '').trim();
   if (message.length < 4) return;
 
   // Ignore messages that are just valid URLs
