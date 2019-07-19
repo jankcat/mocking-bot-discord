@@ -25,14 +25,6 @@ client.on('guildCreate', async (guild) => {
   await checkEmojiExists(guild, 'shrek2');
 });
 
-client.on('guildMemberAdd', async (member) => {
-  if (member.id !== client.user.id) return;
-  console.log(`[${member.guild.name}][guildMemberAdd] Joined server. Checking for emojis.`);
-  await checkEmojiExists(member.guild, 'mocking');
-  await checkEmojiExists(member.guild, 'shrek');
-  await checkEmojiExists(member.guild, 'shrek2');
-});
-
 client.on('guildDelete', async (guild) => {
   console.log(`[${guild.name}][guildDelete] Removed from server.`);
 });
