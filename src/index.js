@@ -16,6 +16,7 @@ client.on('error', console.error);
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
   client.guilds.tap(guild => console.log(`[${guild.name}] [ready] Rejoining server.`));
+  client.user.setActivity('a GaMe wItH yOuR eMoTiOnS');
 });
 
 client.on('guildCreate', async (guild) => {
