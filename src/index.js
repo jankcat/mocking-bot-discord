@@ -33,6 +33,10 @@ client.on('guildMemberAdd', async (member) => {
   await checkEmojiExists(member.guild, 'shrek2');
 });
 
+client.on('guildDelete', async (guild) => {
+  console.log(`[${guild.name}][guildDelete] Removed from server.`);
+});
+
 client.on('message', async (message) => {
   // Ignore bot messages
   if (message.system || message.author.bot) return;
