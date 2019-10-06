@@ -4,4 +4,6 @@ services:
     build: .
     environment:
       - DISCORD_TOKEN
+      - imgFlipUsername
+      - imgFlipPassword
     restart: unless-stopped
