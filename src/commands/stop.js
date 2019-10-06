@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+const request = require('request-promise-native');
 
 module.exports = async function(message, user) {
   try {
@@ -47,14 +47,20 @@ module.exports = async function(message, user) {
         },
       ],
     };
+    const options = {
+      method: 'POST',
+      uri: "https://api.imgflip.com/caption_image",
+      form: data,
+    };
     
-    const res = await fetch('https://api.imgflip.com/caption_image', { method: 'POST', body: JSON.stringify(data) });
+    const res = await request(options);
+    console.log(res);
     const json = await res.json();
     console.log(json);
     
     const reply = `${res.url}`;
     message.channel.send(reply);
-    console.log(`[${newMsg.guild.name}][${newMsg.channel.name}] ${reply}`);
+    console.log(`[${message.guild.name}][${message.channel.name}] ${reply}`);
   } catch (e) {
     console.log(e);
   }

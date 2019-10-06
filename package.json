@@ -20,7 +20,8 @@
     "bufferutil": "^4.0.1",
     "discord.js": "^11.5.1",
     "fuse.js": "^3.4.5",
-    "node-fetch": "^2.6.0",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7",
     "snekfetch": "^4.0.4",
     "valid-url": "^1.0.9"
   }
