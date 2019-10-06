@@ -5,7 +5,7 @@ module.exports = async function(message, user) {
     // Make sure the message is not too
     if (!message.content.trim()) return;
     let newMsg = message.content.replace(/<.*?>/g, '').trim().toUpperCase();
-    if (newMsg.length < 40) return;
+    if (newMsg.length > 40) return;
 
     // Modify the message to resolve channel mentions
     if (newMsg.mentions.channels.size) {
