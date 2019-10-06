@@ -4,6 +4,7 @@ const shrek2Reaction = require('./commands/shrek2Reaction');
 const shrekReaction = require('./commands/shrekReaction');
 const mockingReaction = require('./commands/mockingReaction');
 const prequelMemes = require('./commands/prequelMemes');
+const stop = require('./commands/stop');
 const prequelTts = require('./commands/prequelTts');
 const darthPlagueis = require('./commands/darthPlagueis');
 const guilty = require('./commands/guilty');
@@ -35,9 +36,13 @@ client.on('message', async (message) => {
   if (message.system || message.author.bot) return;
 
   const prequelCommand = '/prequel';
+  const stopCommand = '/stop';
   if (message.content.startsWith(prequelCommand)) {
     const args = message.content.slice(prequelCommand.length + 1); // plus space
     await prequelMemes(message, args);
+  } else if (message.content.startsWith(stopCommand)) {
+    const args = message.content.slice(stopCommand.length + 1); // plus space
+    await stop(message, args);
   } else if (message.content.toLowerCase() === 'hello there') {
     await prequelTts(message);
   } else if (message.content.toLowerCase() === '/guilty') {
