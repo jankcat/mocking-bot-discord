@@ -1,4 +1,4 @@
-const snekfetch = require('snekfetch');
+const fetch = require('node-fetch');
 
 module.exports = async function(message, user) {
   try {
@@ -48,12 +48,11 @@ module.exports = async function(message, user) {
       ],
     };
     
-    const req = await snekfetch.post('https://api.imgflip.com/caption_image');
-    console.log(req);
-    const req2 = await req.send(data);
-    console.log(req2);
+    const res = await fetch('https://api.imgflip.com/caption_image', { method: 'POST', body: data });
+    console.log(res);
+    console.log(res.json());
     
-    const reply = `${req2.body.url}`;
+    const reply = `${res.body.url}`;
     newMsg.channel.send(reply);
     console.log(`[${newMsg.guild.name}][${newMsg.channel.name}] ${reply}`);
   } catch (e) {
