@@ -48,12 +48,18 @@ module.exports = async function(message, user) {
 		],
 	};
   
-  const { body } = await snekfetch.post('https://api.imgflip.com/caption_image').send(data);
-  const reply = `${body.url}`;
-  message.channel.send(reply);
+  try {
+    const { body } = await snekfetch.post('https://api.imgflip.com/caption_image').send(data);
+    const reply = `${body.url}`;
+    message.channel.send(reply);
+    console.log(`[${message.guild.name}][${message.channel.name}] ${reply}`);
+  } catch (e) {
+    console.log(e);
+  }
+  
 
   // Log it in console
-  console.log(`[${message.guild.name}][${message.channel.name}] ${reply}`);
+  
 };
 
 const regexPatterns = {
