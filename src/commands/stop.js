@@ -48,12 +48,12 @@ module.exports = async function(message, user) {
       ],
     };
     
-    const res = await fetch('https://api.imgflip.com/caption_image', { method: 'POST', body: data });
+    const res = await fetch('https://api.imgflip.com/caption_image', { method: 'POST', body: JSON.stringify(data) });
     const json = await res.json();
     console.log(json);
     
-    const reply = `${res.body.url}`;
-    newMsg.channel.send(reply);
+    const reply = `${res.url}`;
+    message.channel.send(reply);
     console.log(`[${newMsg.guild.name}][${newMsg.channel.name}] ${reply}`);
   } catch (e) {
     console.log(e);
