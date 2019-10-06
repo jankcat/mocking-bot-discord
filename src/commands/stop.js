@@ -26,8 +26,8 @@ module.exports = async function(message, user) {
       }
     }
     // Modify the message to remove /stop from the start, if it exists
-    if (newMsg.startsWith('/stop ')) {
-      newMsg = newMsg.slice('/stop '.length);
+    if (newMsg.startsWith('/STOP ')) {
+      newMsg = newMsg.slice('/STOP '.length);
     }
     
     // Do not need to resolve everyone/here
