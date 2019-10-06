@@ -4,30 +4,30 @@ module.exports = async function(message, user) {
   try {
     // Make sure the message is not too
     if (!message.content.trim()) return;
-    let message = message.content.replace(/<.*?>/g, '').trim().toUpperCase();
-    if (message.length < 40) return;
+    let newMsg = message.content.replace(/<.*?>/g, '').trim().toUpperCase();
+    if (newMsg.length < 40) return;
 
     // Modify the message to resolve channel mentions
-    if (message.mentions.channels.size) {
-      for (var [key, value] of message.mentions.channels) {
-        message = message.replace(regexPatterns.channel(key), `#${value.name}`);
+    if (newMsg.mentions.channels.size) {
+      for (var [key, value] of newMsg.mentions.channels) {
+        newMsg = newMsg.replace(regexPatterns.channel(key), `#${value.name}`);
       }
     }
     // Modify the message to resolve user mentions
-    if (message.mentions.users.size) {
-      for (var [key, value] of message.mentions.users) {
-        message = message.replace(regexPatterns.user(key), `@${value.username}`);
+    if (newMsg.mentions.users.size) {
+      for (var [key, value] of newMsg.mentions.users) {
+        newMsg = newMsg.replace(regexPatterns.user(key), `@${value.username}`);
       }
     }
     // Modify the message to resolve role mentions
-    if (message.mentions.roles.size) {
-      for (var [key, value] of message.mentions.roles) {
-        message = message.replace(regexPatterns.role(key), `@${value.name}`);
+    if (newMsg.mentions.roles.size) {
+      for (var [key, value] of newMsg.mentions.roles) {
+        newMsg = newMsg.replace(regexPatterns.role(key), `@${value.name}`);
       }
     }
     // Modify the message to remove /stop from the start, if it exists
-    if (message.startsWith('/stop ')) {
-      message = message.slice('/stop '.length);
+    if (newMsg.startsWith('/stop ')) {
+      newMsg = newMsg.slice('/stop '.length);
     }
     
     // Do not need to resolve everyone/here
@@ -41,7 +41,7 @@ module.exports = async function(message, user) {
       password,
       boxes: [
         {
-          text: `STOP TRYING TO MAKE ${message} HAPPEN`,
+          text: `STOP TRYING TO MAKE ${newMsg} HAPPEN`,
         },
         {
           text: "IT'S NOT GOING TO HAPPEN",
@@ -51,8 +51,8 @@ module.exports = async function(message, user) {
     
     const { body } = await snekfetch.post('https://api.imgflip.com/caption_image').send(data);
     const reply = `${body.url}`;
-    message.channel.send(reply);
-    console.log(`[${message.guild.name}][${message.channel.name}] ${reply}`);
+    newMsg.channel.send(reply);
+    console.log(`[${newMsg.guild.name}][${newMsg.channel.name}] ${reply}`);
   } catch (e) {
     console.log(e);
   }
