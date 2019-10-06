@@ -47,6 +47,7 @@ module.exports = async function(message, user) {
         },
       ],
     };
+    console.log(data);
     const options = {
       method: 'POST',
       uri: "https://api.imgflip.com/caption_image",
@@ -55,8 +56,6 @@ module.exports = async function(message, user) {
     
     const res = await request(options);
     console.log(res);
-    const json = await res.json();
-    console.log(json);
     
     const reply = `${res.url}`;
     message.channel.send(reply);
