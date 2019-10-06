@@ -31,7 +31,7 @@ module.exports = async function(message, user) {
     }
     
     // Do not need to resolve everyone/here
-
+console.log(newMsg);
     // do the dew
     const username = process.env.imgFlipUsername || "";
     const password = process.env.imgFlipPassword || "";
@@ -48,8 +48,11 @@ module.exports = async function(message, user) {
         },
       ],
     };
+    console.log(data);
     
     const { body } = await snekfetch.post('https://api.imgflip.com/caption_image').send(data);
+    
+    console.log(body);
     const reply = `${body.url}`;
     newMsg.channel.send(reply);
     console.log(`[${newMsg.guild.name}][${newMsg.channel.name}] ${reply}`);
