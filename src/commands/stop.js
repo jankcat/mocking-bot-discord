@@ -48,9 +48,8 @@ module.exports = async function(message, user) {
       ],
     };
     
-    const res = await fetch('https://api.imgflip.com/caption_image', { method: 'POST', body: data });
+    const res = await fetch('https://api.imgflip.com/caption_image', { method: 'POST', body: data }).json();
     console.log(res);
-    console.log(res.json());
     
     const reply = `${res.body.url}`;
     newMsg.channel.send(reply);
