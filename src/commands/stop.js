@@ -54,11 +54,8 @@ module.exports = async function(message, user) {
     };
     
     const res = await request(options);
-    console.log(res);
-    console.log(res.data);
-    const json = JSON.parse(res.data);
-    console.log(json);
-    const reply = `${json.url}`;
+    const json = JSON.parse(res);
+    const reply = `${json.data.url}`;
     message.channel.send(reply);
     console.log(`[${message.guild.name}][${message.channel.name}] ${reply}`);
   } catch (e) {
