@@ -48,9 +48,12 @@ module.exports = async function(message, user) {
       ],
     };
     
-    const { body } = await snekfetch.post('https://api.imgflip.com/caption_image').send(data);
+    const req = await snekfetch.post('https://api.imgflip.com/caption_image');
+    console.log(req);
+    const req2 = await req.send(data);
+    console.log(req2);
     
-    const reply = `${body.url}`;
+    const reply = `${req2.body.url}`;
     newMsg.channel.send(reply);
     console.log(`[${newMsg.guild.name}][${newMsg.channel.name}] ${reply}`);
   } catch (e) {
