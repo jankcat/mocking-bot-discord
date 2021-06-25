@@ -7,6 +7,7 @@ const prequelMemes = require('./commands/prequelMemes');
 const stop = require('./commands/stop');
 const prequelTts = require('./commands/prequelTts');
 const darthPlagueis = require('./commands/darthPlagueis');
+const budgie = require('./commands/budgie');
 const guilty = require('./commands/guilty');
 
 const client = new Discord.Client({
@@ -49,6 +50,8 @@ client.on('message', async (message) => {
     await guilty(message);
   } else if (message.content.toLowerCase().startsWith('did you ever hear the tragedy of darth')) {
     await darthPlagueis(message);
+  } else if (message.content.toLowerCase().includes('i had a budgie') && message.content.toLowerCase().includes('but it died')) {
+    await budgie(message);
   }
 });
 
