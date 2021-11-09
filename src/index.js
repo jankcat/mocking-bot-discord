@@ -9,6 +9,7 @@ const prequelTts = require('./commands/prequelTts');
 const darthPlagueis = require('./commands/darthPlagueis');
 const budgie = require('./commands/budgie');
 const guilty = require('./commands/guilty');
+const collin = require('./commands/collin');
 
 const client = new Discord.Client({
   messageCacheMaxSize: 7
