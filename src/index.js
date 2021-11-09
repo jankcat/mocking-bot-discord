@@ -33,25 +33,31 @@ client.on('guildDelete', async (guild) => {
 });
 
 client.on('message', async (message) => {
-  // Ignore bot messages
-  if (message.system || message.author.bot) return;
+  try {
+    // Ignore bot messages
+    if (message.system || message.author.bot) return;
 
-  const prequelCommand = '/prequel';
-  const stopCommand = '/stop';
-  if (message.content.startsWith(prequelCommand)) {
-    const args = message.content.slice(prequelCommand.length + 1); // plus space
-    await prequelMemes(message, args);
-  } else if (message.content.startsWith(stopCommand)) {
-    const args = message.content.slice(stopCommand.length + 1); // plus space
-    await stop(message, args);
-  } else if (message.content.toLowerCase() === 'hello there') {
-    await prequelTts(message);
-  } else if (message.content.toLowerCase() === '/guilty') {
-    await guilty(message);
-  } else if (message.content.toLowerCase().startsWith('did you ever hear the tragedy of darth')) {
-    await darthPlagueis(message);
-  } else if (message.content.toLowerCase().includes('i had a budgie') && message.content.toLowerCase().includes('but it died')) {
-    await budgie(message);
+    const prequelCommand = '/prequel';
+    const stopCommand = '/stop';
+    if (message.content.startsWith(prequelCommand)) {
+      const args = message.content.slice(prequelCommand.length + 1); // plus space
+      await prequelMemes(message, args);
+    } else if (message.content.startsWith(stopCommand)) {
+      const args = message.content.slice(stopCommand.length + 1); // plus space
+      await stop(message, args);
+    } else if (message.content.toLowerCase() === 'hello there') {
+      await prequelTts(message);
+    } else if (message.content.toLowerCase() === '/guilty') {
+      await guilty(message);
+    } else if (message.content.toLowerCase().startsWith('did you ever hear the tragedy of darth')) {
+      await darthPlagueis(message);
+    } else if (message.content.toLowerCase().includes('i had a budgie') && message.content.toLowerCase().includes('but it died')) {
+      await budgie(message);
+    } else if (message.content.toLowerCase() === '/collin') {
+      await collin(message);
+    }
+  } catch (e) {
+    console.error(e);
   }
 });
 
