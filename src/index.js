@@ -33,28 +33,33 @@ client.on('guildDelete', async (guild) => {
   console.log(`[${guild.name}][guildDelete] Removed from server.`);
 });
 
+
+function startsWith(str, command) {
+  return str.startsWith(`/{command}`) || str.startsWith(`|{command}`);
+}
+
 client.on('message', async (message) => {
   try {
     // Ignore bot messages
     if (message.system || message.author.bot) return;
 
-    const prequelCommand = '/prequel';
-    const stopCommand = '/stop';
-    if (message.content.startsWith(prequelCommand)) {
-      const args = message.content.slice(prequelCommand.length + 1); // plus space
+    const prequelCommand = 'prequel';
+    const stopCommand = 'stop';
+    if (startsWith(message.content, prequelCommand)) {
+      const args = message.content.slice(prequelCommand.length + 2); // plus start and space
       await prequelMemes(message, args);
-    } else if (message.content.startsWith(stopCommand)) {
-      const args = message.content.slice(stopCommand.length + 1); // plus space
+    } else if (startsWith(message.content, stopCommand)) {
+      const args = message.content.slice(stopCommand.length + 2); // plus start and space
       await stop(message, args);
     } else if (message.content.toLowerCase() === 'hello there') {
       await prequelTts(message);
-    } else if (message.content.toLowerCase() === '/guilty') {
+    } else if (startsWith(message.content.toLowerCase(), 'guilty')) {
       await guilty(message);
     } else if (message.content.toLowerCase().startsWith('did you ever hear the tragedy of darth')) {
       await darthPlagueis(message);
     } else if (message.content.toLowerCase().includes('i had a budgie') && message.content.toLowerCase().includes('but it died')) {
       await budgie(message);
-    } else if (message.content.toLowerCase() === '/collin') {
+    } else if (startsWith(message.content.toLowerCase(), 'collin')) {
       await collin(message);
     }
   } catch (e) {
