@@ -29,6 +29,9 @@ module.exports = async function(message, user) {
     if (newMsg.startsWith('/STOP ')) {
       newMsg = newMsg.slice('/STOP '.length);
     }
+    if (newMsg.startsWith('|STOP ')) {
+      newMsg = newMsg.slice('|STOP '.length);
+    }
     
     // Do not need to resolve everyone/here
     // do the dew
