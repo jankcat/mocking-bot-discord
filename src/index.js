@@ -35,6 +35,9 @@ client.on('guildDelete', async (guild) => {
 
 
 function startsWith(str, command) {
+  console.log(str)
+  console.log(command)
+  console.log(str.startsWith(`/{command}`) || str.startsWith(`|{command}`))
   return str.startsWith(`/{command}`) || str.startsWith(`|{command}`);
 }
 
